@@ -45,7 +45,7 @@ const ProductInput = ({ onProductFetch }) => {
     setError('');
 
     try {
-      const response = await axios.post('https://flipkart-scraper-2.onrender.com/api/fetch-product', { productUrl: url });
+      const response = await axios.post('https://flipkart-scraper-naal.vercel.app/api/fetch-product', { productUrl: url });
       onProductFetch(response.data);
       setUrl('');
     } catch (err) {
@@ -106,7 +106,7 @@ const ProductCard = ({ product, onRefresh }) => {
   const handleRefresh = async () => {
     setLoading(true);
     try {
-      await axios.post(`https://flipkart-scraper-2.onrender.com/api/update-price/${product.id}`);
+      await axios.post(`https://flipkart-scraper-naal.vercel.app/api/update-price/${product.id}`);
       onRefresh();
     } catch (error) {
       setShowError(true);
@@ -188,7 +188,7 @@ const App = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://flipkart-scraper-2.onrender.com/api/products');
+      const response = await axios.get('https://flipkart-scraper-naal.vercel.app/api/products');
       setProducts(response.data);
     } catch (err) {
       setError('Failed to fetch products');
